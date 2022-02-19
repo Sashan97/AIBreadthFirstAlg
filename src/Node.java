@@ -8,4 +8,8 @@ public class Node {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public Node(String title) {
+        this.title = title;
+    }
 }

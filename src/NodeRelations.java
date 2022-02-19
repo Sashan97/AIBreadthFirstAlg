@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class NodeRelations {
-    ArrayList<Relation> relations;
+    ArrayList<Relation> relations = new ArrayList<>();
 
     public void addRelation(Node firstNode, Node secondNode){
         Relation relation = new Relation(firstNode, secondNode);
@@ -28,5 +28,17 @@ public class NodeRelations {
 
         if(!relations.isEmpty()) return nodeRelations;
         else return null;
+    }
+
+    public boolean checkIfAny(String nodeTitle){
+        for (Relation rel : relations)
+            if(rel.getFirstNode().getTitle().equals(nodeTitle)) return true;
+        return false;
+    }
+
+    public Node returnNodeFromRelation(String nodeTitle){
+        for (Relation rel : relations)
+            if(rel.getFirstNode().getTitle().equals(nodeTitle)) return rel.getFirstNode();
+        return null;
     }
 }
