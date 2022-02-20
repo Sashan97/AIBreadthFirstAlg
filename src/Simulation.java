@@ -19,19 +19,19 @@ public class Simulation {
                 if (pair.length != 2) throw new IOException();
 
                 Node firstNode;
-                if(relations.checkIfAny(pair[0])){
-                    firstNode = relations.returnNodeFromRelation(pair[0]);
+                if(getRelations().checkIfAny(pair[0])){
+                    firstNode = getRelations().returnNodeFromRelation(pair[0]);
                 }
                 else firstNode = new Node(pair[0]);
 
                 Node secondNode;
-                if(relations.checkIfAny(pair[1])){
-                    secondNode = relations.returnNodeFromRelation(pair[1]);
+                if(getRelations().checkIfAny(pair[1])){
+                    secondNode = getRelations().returnNodeFromRelation(pair[1]);
                 }
                 else secondNode = new Node(pair[1]);
 
-                relations.addRelation(firstNode, secondNode);
-                relations.addRelation(secondNode, firstNode);
+                getRelations().addRelation(firstNode, secondNode);
+                getRelations().addRelation(secondNode, firstNode);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class Simulation {
     public Node findRoute(String initialNodeName, String goalNodeName){
         target = goalNodeName;
         PriorityQueue<Node> nodeQueue = new PriorityQueue<>();
-        Node current = relations.returnNodeFromRelation(initialNodeName);
+        Node current = getRelations().returnNodeFromRelation(initialNodeName);
 
         if(checkTargetReached(current)) return current;
 
@@ -50,7 +50,7 @@ public class Simulation {
 
         while(true){
             current = nodeQueue.remove();
-            ArrayList<Relation> currentRelations = relations.getRelations(current);
+            ArrayList<Relation> currentRelations = getRelations().getRelations(current);
             ArrayList<Node> children = new ArrayList<>();
             for (Relation rel : currentRelations) {
                 Node temp = rel.getSecondNode();
@@ -77,5 +77,9 @@ public class Simulation {
             if(node.getTitle().equals(name)) return true;
         }
         return false;
+    }
+
+    public NodeRelations getRelations() {
+        return relations;
     }
 }
