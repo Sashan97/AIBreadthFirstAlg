@@ -1,6 +1,7 @@
 Vilnius Šalčininkai
 Vilnius Trakai
 Vilnius Druskininkai
+Vilnius Kaunas
 Druskininkai Alytus
 Alytus Marijampolė
 Marijampolė Kaunas

@@ -1,16 +1,14 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class Simulation {
     private NodeRelations relations = new NodeRelations();
     private String startPoint;
     private String target;
-    private ArrayList<Node> visited;
+    private ArrayList<String> visited = new ArrayList<>();
 
     public void addInitialRelations(){
         try (BufferedReader br = new BufferedReader(new FileReader("resources/cities.txt"))) {
@@ -35,22 +33,49 @@ public class Simulation {
                 relations.addRelation(firstNode, secondNode);
                 relations.addRelation(secondNode, firstNode);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void findRoute(){
+    public Node findRoute(String initialNodeName, String goalNodeName){
+        target = goalNodeName;
         PriorityQueue<Node> nodeQueue = new PriorityQueue<>();
+        Node current = relations.returnNodeFromRelation(initialNodeName);
 
+        if(checkTargetReached(current)) return current;
 
+        nodeQueue.add(current);
+        visited.add(current.getTitle());
 
+        while(true){
+            current = nodeQueue.remove();
+            ArrayList<Relation> currentRelations = relations.getRelations(current);
+            ArrayList<Node> children = new ArrayList<>();
+            for (Relation rel : currentRelations) {
+                Node temp = rel.getSecondNode();
+                if(!checkVisited(temp)) temp.setPrevious(current);
+                children.add(temp);
+            }
+
+            for(Node node : children){
+                if(!checkVisited(node)){
+                    if(checkTargetReached(node)) return node;
+                    visited.add(node.getTitle());
+                    nodeQueue.add(node);
+                }
+            }
+        }
     }
 
     private boolean checkTargetReached(Node node){
-        if(node.getTitle().equals(target)) return true;
-        else return false;
+        return node.getTitle().equals(target);
+    }
+
+    private boolean checkVisited(Node node){
+        for (String name : visited) {
+            if(node.getTitle().equals(name)) return true;
+        }
+        return false;
     }
 }
