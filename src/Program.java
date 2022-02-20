@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class Program {
@@ -31,8 +30,7 @@ public class Program {
     }
 
     private static boolean checkNodesExist(Simulation sim, String initialNode, String targetNode) {
-        if(sim.getRelations().checkIfAny(initialNode) && sim.getRelations().checkIfAny(targetNode)) return true;
-        return false;
+        return sim.getRelations().checkIfAny(initialNode) && sim.getRelations().checkIfAny(targetNode);
     }
 
     private static String nodesInput() {
@@ -60,8 +58,8 @@ public class Program {
         Collections.reverse(route);
 
         for (int i = 0; i < route.size(); i++) {
-            System.out.printf(route.get(i));
-            if(i < route.size() - 1) System.out.printf(" -> ");
+            System.out.print(route.get(i));
+            if(i < route.size() - 1) System.out.print(" -> ");
         }
     }
 }

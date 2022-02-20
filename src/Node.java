@@ -1,13 +1,9 @@
 public class Node implements Comparable {
-    private String title;
+    private final String title;
     private Node previous;
 
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Node(String title) {

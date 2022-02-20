@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class Simulation {
-    private NodeRelations relations = new NodeRelations();
-    private String startPoint;
+    private final NodeRelations relations = new NodeRelations();
     private String target;
-    private ArrayList<String> visited = new ArrayList<>();
+    private final ArrayList<String> visited = new ArrayList<>();
 
     public void addInitialRelations(){
         try (BufferedReader br = new BufferedReader(new FileReader("resources/cities.txt"))) {
