@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.PriorityQueue;
 
 /**
  * The Simulation class describes the logic of the search algorithm, as well as
@@ -57,36 +56,36 @@ public class Simulation {
      * Finds the route to the target node using Breadth First search algorithm.
      * @param initialNodeName The title of the initial node, representing the beginning of the route.
      * @param goalNodeName The title of the goal node, representing the target of the route.
-     * @return Target node, if the route in found successfully; otherwise, null.
+     * @return Target node, if the route is found successfully; otherwise, null.
      */
     public Node findRoute(String initialNodeName, String goalNodeName){
         target = goalNodeName;
-        LinkedList<Node> nodeQueue = new LinkedList<>();
-        Node current = new Node(initialNodeName);
-        if(checkTargetReached(current)) return current;
+        LinkedList<Node> nodeQueue = new LinkedList<>();    // LinkedList is used as a queue
+        Node current = new Node(initialNodeName);           // Set current to initial node
+        if(checkTargetReached(current)) return current;     // If initial node is route target, then return
 
-        nodeQueue.add(current);
-        visited.add(current.getTitle());
+        nodeQueue.add(current);                             // Add initial to queue
+        visited.add(current.getTitle());                    // Mark initial as visited
 
         while(!nodeQueue.isEmpty()){
-            current = nodeQueue.remove();
-            ArrayList<Relation> currentRelations = relations.getRelations(current);
+            current = nodeQueue.remove();                   // Remove node from queue
+            ArrayList<Relation> currentRelations = relations.getRelations(current);     // Get node relations
             ArrayList<Node> children = new ArrayList<>();
-            for (Relation rel : currentRelations) {
+            for (Relation rel : currentRelations) {                     // Loop to convert relations to child array
                 Node temp = rel.getSecondNode();
-                if(checkUnvisited(temp)) temp.setPrevious(current);
+                if(checkUnvisited(temp)) temp.setPrevious(current);     // If child is unvisited set its previous attribute to current
                 children.add(temp);
             }
 
-            for(Node node : children){
-                if(checkUnvisited(node)){
-                    if(checkTargetReached(node)) return node;
-                    visited.add(node.getTitle());
-                    nodeQueue.add(node);
+            for(Node node : children){                                  // Loop to add child nodes to queue
+                if(checkUnvisited(node)){                               // If child is unvisited...
+                    if(checkTargetReached(node)) return node;           // ... and child is not route target...
+                    visited.add(node.getTitle());                       // ... then mark it as visited...
+                    nodeQueue.add(node);                                // ... and add to queue
                 }
             }
         }
-        return null;
+        return null;    // if queue is empty and target is still not found, return null
     }
 
     /**
