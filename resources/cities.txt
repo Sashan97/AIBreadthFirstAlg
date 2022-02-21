@@ -6,6 +6,7 @@ Druskininkai Alytus
 Alytus Marijampolė
 Marijampolė Kaunas
 Kaunas Šilutė
+Kaunas Klaipėda
 Šilutė Klaipėda
 Klaipėda Palanga
 Klaipėda Nida

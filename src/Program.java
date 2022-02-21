@@ -3,11 +3,33 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
+
+/**
+ * The main class of the Breadth First search algorithm demonstration program
+ *
+ * @author Aleksandr Boldyšev
+ * @author Tomaš Pieško
+ * @author Giedrė Narbutaitė
+ *
+ * @version 1.2
+ * @since 1.0
+ */
 
 public class Program {
 
     public static void main(String[] args) {
-        simulationStart();
+        boolean loop = true;
+        Scanner input = new Scanner(System.in);
+        while (loop){
+            simulationStart();
+            System.out.println("Continue? Y/N");
+            String c = input.nextLine();
+            if(c.equalsIgnoreCase("n")){
+                loop =  false;
+            }
+        }
+
     }
 
     private static void simulationStart() {
@@ -22,7 +44,8 @@ public class Program {
 
         if(checkNodesExist(sim, initialNode, targetNode)){
             Node goal = sim.findRoute(initialNode, targetNode);
-            restoreRoute(goal);
+            if (goal != null) restoreRoute(goal);
+            else System.out.println("Search failed.");
         }
         else{
             System.out.println("Incorrect initial or target position");
@@ -46,6 +69,10 @@ public class Program {
         return input;
     }
 
+    /**
+     * Restores the sequence of actions that were taken to get to the target node.
+     * @param goal Target node object.
+     */
     private static void restoreRoute(Node goal) {
         ArrayList<String> route = new ArrayList<>();
         route.add(goal.getTitle());
@@ -61,5 +88,6 @@ public class Program {
             System.out.print(route.get(i));
             if(i < route.size() - 1) System.out.print(" -> ");
         }
+        System.out.println();
     }
 }

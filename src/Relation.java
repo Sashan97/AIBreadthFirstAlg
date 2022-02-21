@@ -1,3 +1,11 @@
+/**
+ * The Relation class represents a pair of nodes between which a direct transition is possible.
+ *
+ * @author Aleksandr Boldyšev
+ *
+ * @since 1.0
+ */
+
 public class Relation {
     private Node firstNode;
     private Node secondNode;

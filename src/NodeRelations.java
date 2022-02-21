@@ -1,13 +1,34 @@
 import java.util.ArrayList;
 
+/**
+ * The NodeRelations class provides access to the list of relations between the nodes
+ * and implements relationship management methods
+ *
+ * @author Aleksandr Boldyšev
+ * @author Tomaš Pieško
+ * @author Giedrė Narbutaitė
+ *
+ * @since 1.0
+ */
+
 public class NodeRelations {
     ArrayList<Relation> relations = new ArrayList<>();
 
+    /**
+     * Adds a new relation to the list.
+     * @param firstNode First node in a pair.
+     * @param secondNode Second node in a pair.
+     */
     public void addRelation(Node firstNode, Node secondNode){
         Relation relation = new Relation(firstNode, secondNode);
         relations.add(relation);
     }
 
+    /**
+     * Returns a list of all relations that the specified node participates in.
+     * @param node The node whose relations are to be retrieved.
+     * @return The list of node relations.
+     */
     public ArrayList<Relation> getRelations(Node node){
         ArrayList<Relation> nodeRelations = new ArrayList<>();
 
@@ -19,6 +40,12 @@ public class NodeRelations {
         else return null;
     }
 
+    /**
+     *
+     * Returns a list of all relations that the specified node participates in.
+     * @param nodeTitle The title of the node whose relations are to be retrieved.
+     * @return The list of node relations.
+     */
     public ArrayList<Relation> getRelations(String nodeTitle){
         ArrayList<Relation> nodeRelations = new ArrayList<>();
 
@@ -30,12 +57,22 @@ public class NodeRelations {
         else return null;
     }
 
+    /**
+     * Checks if the specified node has any relations.
+     * @param nodeTitle The title of the node to be checked.
+     * @return true, if at least one relation is found; otherwise, false.
+     */
     public boolean checkIfAny(String nodeTitle){
         for (Relation rel : relations)
             if(rel.getFirstNode().getTitle().equals(nodeTitle)) return true;
         return false;
     }
 
+    /**
+     * Returns a Node object by its title.
+     * @param nodeTitle Title of the node to be returned.
+     * @return Node object, if at least one relation is found; otherwise, null.
+     */
     public Node returnNodeFromRelation(String nodeTitle){
         for (Relation rel : relations)
             if(rel.getFirstNode().getTitle().equals(nodeTitle)) return rel.getFirstNode();
