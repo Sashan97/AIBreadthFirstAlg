@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
- * The Simulation class describes the logic of the search algorithm, as well as
- * provides the preparation and service methods that are used during the search process
+ * Modeliavimo klasėje aprašoma paieškos algoritmo logika, taip pat
+ * pateikia paruošimo ir aptarnavimo būdus, kurie naudojami paieškos procese
  *
  * @author Aleksandr Boldyšev
  * @author Tomaš Pieško
@@ -21,7 +21,7 @@ public class Simulation {
     private final ArrayList<String> visited = new ArrayList<>();
 
     /**
-     * Obtains the list of relations between nodes from a text file and adds them to an ArrayList.
+     * Gauna ryšių tarp mazgų sąrašą iš tekstinio failo ir prideda juos prie ArrayList.
      */
     public void addInitialRelations(){
         try (BufferedReader br = new BufferedReader(new FileReader("resources/cities.txt"))) {
@@ -53,10 +53,10 @@ public class Simulation {
     }
 
     /**
-     * Finds the route to the target node using Breadth First search algorithm.
-     * @param initialNodeName The title of the initial node, representing the beginning of the route.
-     * @param goalNodeName The title of the goal node, representing the target of the route.
-     * @return Target node, if the route is found successfully; otherwise, null.
+     * Suranda maršrutą į tikslinį mazgą naudodamas paieškos algoritmą Breadth First.
+     * @param initialNodeName Pradinio mazgo pavadinimas, nurodantis maršruto pradžią.
+     * @param goalNodeName Tikslo mazgo pavadinimas, nurodantis maršruto tikslą.
+     * @return Tikslinis mazgas, jei maršrutas rastas sėkmingai; kitu atveju null.
      */
     public Node findRoute(String initialNodeName, String goalNodeName){
         target = goalNodeName;
@@ -89,18 +89,18 @@ public class Simulation {
     }
 
     /**
-     * Checks if the provided node is a target node.
-     * @param node Node to be checked.
-     * @return True, if the provided node is a target node; otherwise, false.
+     * Patikrina, ar pateiktas mazgas yra tikslo mazgas.
+     * @param node Mazgas, kurį reikia patikrinti.
+     * @return Tiesa, jei pateiktas mazgas yra tikslo mazgas; kitu atveju klaidinga.
      */
     private boolean checkTargetReached(Node node){
         return node.getTitle().equals(target);
     }
 
     /**
-     * Checks if the node was visited before.
-     * @param node Node to be checked.
-     * @return True, if the provided node is marked as visited; otherwise, false.
+     * Patikrina, ar mazgas buvo aplankytas anksčiau.
+     * @param node Mazgas, kurį reikia patikrinti.
+     * @return Tiesa, jei pateiktas mazgas pažymėtas kaip aplankytas; kitu atveju klaidinga.
      */
     private boolean checkUnvisited(Node node){
         for (String name : visited) {
@@ -110,8 +110,8 @@ public class Simulation {
     }
 
     /**
-     * Gets the object, containing the list of relations between nodes.
-     * @return NodeRelations object, used in current simulation.
+     * Gauna objektą, kuriame yra ryšių tarp mazgų sąrašas.
+     * @return NodeRelations object, naudojamas dabartiniam modeliavimui (used in current simulation).
      */
     public NodeRelations getRelations() {
         return relations;
