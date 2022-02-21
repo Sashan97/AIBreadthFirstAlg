@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 /**
- * The main class of the Breadth First search algorithm demonstration program
+ * Pagrindinė Breadth First paieškos algoritmo demonstravimo programos klasė
  *
  * @author Aleksandr Boldyšev
  * @author Tomaš Pieško
@@ -70,7 +70,7 @@ public class Program {
     }
 
     /**
-     * Restores the sequence of actions that were taken to get to the target node.
+     * Atkuria veiksmų, kurių buvo imtasi norint pasiekti tikslinį mazgą, seką.
      * @param goal Target node object.
      */
     private static void restoreRoute(Node goal) {

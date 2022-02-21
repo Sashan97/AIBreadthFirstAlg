@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 /**
- * The NodeRelations class provides access to the list of relations between the nodes
- * and implements relationship management methods
+ * „NodeRelations“ klasė suteikia prieigą prie ryšių tarp mazgų sąrašo
+ * ir teikia santykių valdymo metodus
  *
  * @author Aleksandr Boldyšev
  * @author Tomaš Pieško
