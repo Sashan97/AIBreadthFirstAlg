@@ -1,7 +1,7 @@
 /**
- * The Node class provides the necessary infrastructure for the search algorithm to work,
- * such as the title of the node, as well as a reference to the previous node (the node,
- * whose subsidiary element is a particular node)
+ * „Node“ klasė suteikia reikiamą infrastruktūrą, kad paieškos algoritmas veiktų,
+ * pvz., mazgo pavadinimas, taip pat nuoroda į ankstesnį mazgą
+ * (mazgą, kurio vaikinis elementas yra tam tikras mazgas)
  *
  * @author Aleksandr Boldyšev
  *

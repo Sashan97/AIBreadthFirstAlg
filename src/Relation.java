@@ -1,5 +1,5 @@
 /**
- * The Relation class represents a pair of nodes between which a direct transition is possible.
+ * Santykių klasė reiškia mazgų, tarp kurių galimas tiesioginis perėjimas, porą.
  *
  * @author Aleksandr Boldyšev
  *
